@@ -1,5 +1,6 @@
 import type {
 	IAuthenticateGeneric,
+	Icon,
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
@@ -10,7 +11,7 @@ export class SmartleadApi implements ICredentialType {
 
 	displayName = 'Smartlead API';
 
-	icon = 'file:smartlead.svg';
+	icon: Icon = { light: 'file:../icons/smartlead.svg', dark: 'file:../icons/smartlead.dark.svg' };
 
 	documentationUrl = 'https://github.com/QT-n8n/n8n-nodes-smartlead#credentials';
 

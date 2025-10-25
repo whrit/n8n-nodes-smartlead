@@ -24,7 +24,7 @@ export class SmartleadTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Smartlead Trigger',
 		name: 'smartleadTrigger',
-		icon: { light: 'file:smartlead.svg', dark: 'file:smartlead.dark.svg' },
+		icon: { light: 'file:../../icons/smartlead.svg', dark: 'file:../../icons/smartlead.dark.svg' },
 		group: ['trigger'],
 		version: 1,
 		description: 'Receive Smartlead webhook events (replies, opens, unsubscribes, and more)',

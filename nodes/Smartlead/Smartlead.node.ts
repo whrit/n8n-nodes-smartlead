@@ -7,7 +7,7 @@ export class Smartlead implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Smartlead',
 		name: 'smartlead',
-		icon: { light: 'file:smartlead.svg', dark: 'file:smartlead.dark.svg' },
+		icon: { light: 'file:../../icons/smartlead.svg', dark: 'file:../../icons/smartlead.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
