@@ -1,4 +1,4 @@
-import { NodeConnectionType, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { leadDescription } from './resources/lead';
 import { inboxDescription } from './resources/inbox';
 import { webhookDescription } from './resources/webhook';
@@ -16,8 +16,8 @@ export class Smartlead implements INodeType {
 			name: 'Smartlead',
 		},
 		usableAsTool: true,
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ['main'],
+		outputs: ['main'],
 		credentials: [{ name: 'smartleadApi', required: true }],
 		requestDefaults: {
 			baseURL: 'https://server.smartlead.ai/api/v1',

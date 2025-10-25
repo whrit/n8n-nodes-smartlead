@@ -42,9 +42,7 @@ const enforceLeadBatch = async function (
 
 		requestOptions.body.leads = prepareLeadBatch(leads);
 	} catch (error) {
-		throw new NodeOperationError(this.getNode(), (error as Error).message, {
-			cause: error as Error,
-		});
+		throw new NodeOperationError(this.getNode(), (error as Error).message);
 	}
 
 	return requestOptions;

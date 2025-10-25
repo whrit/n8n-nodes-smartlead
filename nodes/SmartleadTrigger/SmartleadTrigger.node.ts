@@ -1,5 +1,4 @@
 import {
-	NodeConnectionType,
 	type INodeExecutionData,
 	type INodeType,
 	type INodeTypeDescription,
@@ -24,16 +23,16 @@ export class SmartleadTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Smartlead Trigger',
 		name: 'smartleadTrigger',
-		icon: { light: 'file:../../icons/smartlead.svg', dark: 'file:../../icons/smartlead.dark.svg' },
+		icon: { light: 'file:smartlead.svg', dark: 'file:smartlead.dark.svg' },
 		group: ['trigger'],
 		version: 1,
 		description: 'Receive Smartlead webhook events (replies, opens, unsubscribes, and more)',
 		defaults: {
 			name: 'Smartlead Trigger',
 		},
-		usableAsTool: false,
+		usableAsTool: true,
 		inputs: [],
-		outputs: [NodeConnectionType.Main],
+		outputs: ['main'],
 		webhooks: [
 			{
 				name: 'default',
