@@ -1,0 +1,73 @@
+{
+	"name": "Smartlead Campaign Pull",
+	"nodes": [
+		{
+			"id": "SmartleadList",
+			"parameters": {
+				"resource": "lead",
+				"operation": "listCampaignLeads",
+				"campaignId": "YOUR_CAMPAIGN_ID",
+				"limit": 100
+			},
+			"name": "Smartlead - List Leads",
+			"type": "n8n-nodes-smartlead.smartlead",
+			"typeVersion": 1,
+			"position": [-260, 220]
+		},
+		{
+			"id": "SplitBatches",
+			"parameters": {
+				"batchSize": 25,
+				"options": {
+					"resetAtStart": true
+				}
+			},
+			"name": "Split In Batches",
+			"type": "n8n-nodes-base.splitInBatches",
+			"typeVersion": 1,
+			"position": [-10, 220]
+		},
+		{
+			"id": "HttpPush",
+			"parameters": {
+				"url": "https://example.com/prospect-sync",
+				"method": "POST",
+				"jsonParameters": true,
+				"options": {},
+				"bodyParametersJson": "={{ $json }}"
+			},
+			"name": "HTTP Request",
+			"type": "n8n-nodes-base.httpRequest",
+			"typeVersion": 2,
+			"position": [250, 220]
+		}
+	],
+	"connections": {
+		"Smartlead - List Leads": {
+			"main": [
+				[
+					{
+						"node": "Split In Batches",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Split In Batches": {
+			"main": [
+				[
+					{
+						"node": "HTTP Request",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		}
+	},
+	"active": false,
+	"settings": {},
+	"versionId": "smartlead-campaign-pull",
+	"id": "1"
+}

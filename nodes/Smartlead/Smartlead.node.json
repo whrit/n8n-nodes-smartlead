@@ -2,16 +2,16 @@
 	"node": "n8n-nodes-smartlead",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Development", "Developer Tools"],
+	"categories": ["Marketing", "CRM"],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://github.com/org/repo?tab=readme-ov-file#credentials"
+				"url": "https://github.com/QT-n8n/n8n-nodes-smartlead#credentials"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/org/repo?tab=readme-ov-file"
+				"url": "https://github.com/QT-n8n/n8n-nodes-smartlead"
 			}
 		]
 	}

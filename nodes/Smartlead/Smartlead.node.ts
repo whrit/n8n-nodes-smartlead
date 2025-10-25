@@ -1,6 +1,7 @@
 import { NodeConnectionType, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
-import { userDescription } from './resources/user';
-import { companyDescription } from './resources/company';
+import { leadDescription } from './resources/lead';
+import { inboxDescription } from './resources/inbox';
+import { webhookDescription } from './resources/webhook';
 
 export class Smartlead implements INodeType {
 	description: INodeTypeDescription = {
@@ -20,6 +21,9 @@ export class Smartlead implements INodeType {
 		credentials: [{ name: 'smartleadApi', required: true }],
 		requestDefaults: {
 			baseURL: 'https://server.smartlead.ai/api/v1',
+			qs: {
+				api_key: '={{$credentials.apiKey}}',
+			},
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
@@ -33,18 +37,23 @@ export class Smartlead implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'User',
-						value: 'user',
+						name: 'Lead',
+						value: 'lead',
 					},
 					{
-						name: 'Company',
-						value: 'company',
+						name: 'Inbox',
+						value: 'inbox',
+					},
+					{
+						name: 'Webhook',
+						value: 'webhook',
 					},
 				],
-				default: 'user',
+				default: 'lead',
 			},
-			...userDescription,
-			...companyDescription,
+			...leadDescription,
+			...inboxDescription,
+			...webhookDescription,
 		],
 	};
 }

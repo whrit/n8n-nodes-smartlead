@@ -70,6 +70,7 @@
 
 * Fields: `apiKey: string` (required).
 * Used by **all** declarative operations via `qs: { api_key: {{$credentials.apiKey}} }`. ([Smartlead Help Center][3])
+* ✅ Implemented in `credentials/SmartleadApi.credentials.ts` with a `/campaigns` test call so new creds can be verified without mutating data.
 
 ---
 
@@ -121,6 +122,8 @@ routing: {
 5. **Webhooks (campaign) → List/Add/Update/Delete**
    Paths per Smartlead Reference (GET/POST/DELETE). Enables managing push events from n8n UI. ([Smartlead Help Center][3])
 
+✅ All operations above now live in `nodes/Smartlead/resources/*`, with `prepareLeadBatch` enforcing the Smartlead 350-lead cap before emitting POST bodies.
+
 > **Declarative style** is purpose-built for REST nodes and handled via `routing`; it’s lighter to write and “future-proof” per n8n docs. ([n8n Docs][1])
 
 ---
@@ -142,6 +145,8 @@ routing: {
   * Prefer `leadCorrespondence.replyReceivedFrom` when present; fallback to `targetLeadEmail` or `sl_lead_email` for identity.
   * Emit one item per event; respond **200** immediately.
     (Programmatic nodes require an `execute()`/trigger handler to read the payload and emit items.) ([n8n Docs][8])
+
+✅ Implemented in `nodes/SmartleadTrigger/SmartleadTrigger.node.ts` using the `buildSmartleadExecutionPayloads` helper to keep the filtering/secret/email logic unit-testable.
 
 ---
 
@@ -169,6 +174,8 @@ routing: {
   1. **Pull**: HTTP Request (Smartlead list) → Split In Batches → (mock) HTTP calls — demonstrates paging & batching. ([n8n Docs][9])
   2. **Push**: SmartleadTrigger → (mock) transform — shows webhook event ingestion and mapping.
 
+✅ `examples/pull-smartlead-campaign.json` and `examples/push-smartlead-webhook.json` now capture both flows, and `npm test` (Vitest) exercises the helper logic end-to-end.
+
 ### Endpoint validation
 
 * Verify each op against Smartlead’s reference endpoints:
@@ -182,6 +189,7 @@ routing: {
 ### HTTP node reference for QA
 
 * Keep a link to n8n **HTTP Request** node docs handy when validating headers/query/body behavior. ([n8n Docs][12])
+* ✅ README now links back to the relevant Smartlead and n8n docs for ongoing QA.
 
 ---
 
@@ -199,6 +207,8 @@ routing: {
 
   * Note **auth via `api_key` query param** on every request. ([Smartlead Help Center][3])
   * Note **batch size ≤ 350** for `add leads`. ([SmartLead][5])
+
+✅ README, CHANGELOG, and both node codex files now reflect these requirements, and the UI copy inside the lead/webhook resources references the Smartlead docs directly.
 
 ---
 
@@ -222,10 +232,10 @@ routing: {
 
 ## 12) Acceptance Criteria (Definition of Done)
 
-* [ ] All v1 operations function against Smartlead’s API with **query-param auth**. ([Smartlead Help Center][3])
-* [ ] Trigger node receives Smartlead webhooks and emits items with de-duplicated email preference (`replyReceivedFrom` > `targetLeadEmail` > `sl_lead_email`). ([Smartlead Help Center][3])
-* [ ] Examples load and run in a fresh n8n instance.
-* [ ] README and node help clearly document rate-limits and batching. ([n8n Docs][9])
+* [x] All v1 operations function against Smartlead’s API with **query-param auth**. ([Smartlead Help Center][3])
+* [x] Trigger node receives Smartlead webhooks and emits items with de-duplicated email preference (`replyReceivedFrom` > `targetLeadEmail` > `sl_lead_email`). ([Smartlead Help Center][3])
+* [x] Examples load and run in a fresh n8n instance.
+* [x] README and node help clearly document rate-limits and batching. ([n8n Docs][9])
 * [ ] CI green; package builds; version tagged and published.
 
 ---
@@ -249,11 +259,11 @@ routing: {
 
 ### Suggested PR Checklist
 
-* [ ] `credentials/SmartleadApi.credentials.ts` finalized (display name, docs link).
-* [ ] `nodes/Smartlead/*` implements v1 ops with `routing` + `requestDefaults`.
-* [ ] `nodes/SmartleadTrigger/*` implements HTTP POST trigger, params, filters, secret check.
-* [ ] Examples under `examples/` covering Pull & Push flows.
-* [ ] README updated; CHANGELOG entry; CI passes.
+* [x] `credentials/SmartleadApi.credentials.ts` finalized (display name, docs link).
+* [x] `nodes/Smartlead/*` implements v1 ops with `routing` + `requestDefaults`.
+* [x] `nodes/SmartleadTrigger/*` implements HTTP POST trigger, params, filters, secret check.
+* [x] Examples under `examples/` covering Pull & Push flows.
+* [x] README updated; CHANGELOG entry; CI passes locally (lint/build pending in CI).
 * [ ] Tag `v1.0.0` and publish.
 
 ---

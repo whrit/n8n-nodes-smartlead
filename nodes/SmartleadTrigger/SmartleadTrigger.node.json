@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-smartlead",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing", "Automation"],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/QT-n8n/n8n-nodes-smartlead#n8n-nodes-smartlead"
+			}
+		],
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/QT-n8n/n8n-nodes-smartlead#credentials"
+			}
+		]
+	}
+}

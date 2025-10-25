@@ -10,8 +10,9 @@ export class SmartleadApi implements ICredentialType {
 
 	displayName = 'Smartlead API';
 
-	// Link to your community node's README
-	documentationUrl = 'https://github.com/org/-smartlead?tab=readme-ov-file#credentials';
+	icon = 'file:smartlead.svg';
+
+	documentationUrl = 'https://github.com/QT-n8n/n8n-nodes-smartlead#credentials';
 
 	properties: INodeProperties[] = [
 		{
@@ -27,8 +28,8 @@ export class SmartleadApi implements ICredentialType {
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			headers: {
-				'x-api-key': '={{$credentials.apiKey}}',
+			qs: {
+				api_key: '={{$credentials.apiKey}}',
 			},
 		},
 	};
@@ -36,7 +37,7 @@ export class SmartleadApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: 'https://server.smartlead.ai/api/v1',
-			url: '/v1/user',
+			url: '/campaigns',
 		},
 	};
 }

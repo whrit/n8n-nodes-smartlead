@@ -1,0 +1,71 @@
+{
+	"name": "Smartlead Webhook Push",
+	"nodes": [
+		{
+			"id": "SmartleadTriggerNode",
+			"parameters": {
+				"events": [
+					"EMAIL_REPLY",
+					"LEAD_UNSUBSCRIBED"
+				],
+				"responseMessage": "ok"
+			},
+			"name": "Smartlead Trigger",
+			"type": "n8n-nodes-smartlead.smartleadTrigger",
+			"typeVersion": 1,
+			"position": [-320, 200]
+		},
+		{
+			"id": "MapPayload",
+			"parameters": {
+				"functionCode": "return items.map(item => ({ json: { email: item.json.resolvedLeadEmail || item.json.targetLeadEmail, event: item.json.event_type, raw: item.json } }));"
+			},
+			"name": "Map Payload",
+			"type": "n8n-nodes-base.function",
+			"typeVersion": 1,
+			"position": [-40, 200]
+		},
+		{
+			"id": "PushHttp",
+			"parameters": {
+				"url": "https://example.com/webhook",
+				"method": "POST",
+				"jsonParameters": true,
+				"options": {},
+				"bodyParametersJson": "={{ $json }}"
+			},
+			"name": "Push to CRM",
+			"type": "n8n-nodes-base.httpRequest",
+			"typeVersion": 2,
+			"position": [240, 200]
+		}
+	],
+	"connections": {
+		"Smartlead Trigger": {
+			"main": [
+				[
+					{
+						"node": "Map Payload",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		},
+		"Map Payload": {
+			"main": [
+				[
+					{
+						"node": "Push to CRM",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		}
+	},
+	"active": false,
+	"settings": {},
+	"versionId": "smartlead-webhook-push",
+	"id": "2"
+}
