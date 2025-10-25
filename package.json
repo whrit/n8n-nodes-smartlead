@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-smartlead-new",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Smartlead action and trigger nodes for n8n workflows",
   "license": "MIT",
   "homepage": "https://github.com/whrit/n8n-nodes-smartlead.git",
