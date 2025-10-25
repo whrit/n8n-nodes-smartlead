@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "description": "Smartlead action and trigger nodes for n8n workflows",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/whrit/n8n-nodes-smartlead.git",
   "keywords": [
     "n8n-community-node-package"
   ],
   "author": {
-    "name": "Beckett_quik",
-    "email": "beckett@quikturn.io"
+    "name": "mrbuckett",
+    "email": "bw2336@nyu.edu"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/QT-n8n/n8n-nodes-smartlead.git"
+    "url": "https://github.com/whrit/n8n-nodes-smartlead.git"
   },
   "scripts": {
     "build": "n8n-node build",

@@ -13,7 +13,7 @@ export class SmartleadApi implements ICredentialType {
 
 	icon: Icon = { light: 'file:../icons/smartlead.svg', dark: 'file:../icons/smartlead.dark.svg' };
 
-	documentationUrl = 'https://github.com/QT-n8n/n8n-nodes-smartlead#credentials';
+	documentationUrl = 'https://github.com/whrit/n8n-nodes-smartlead#credentials';
 
 	properties: INodeProperties[] = [
 		{

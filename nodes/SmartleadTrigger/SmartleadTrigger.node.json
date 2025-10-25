@@ -6,12 +6,12 @@
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/QT-n8n/n8n-nodes-smartlead#n8n-nodes-smartlead"
+				"url": "https://github.com/whrit/n8n-nodes-smartlead#n8n-nodes-smartlead"
 			}
 		],
 		"credentialDocumentation": [
 			{
-				"url": "https://github.com/QT-n8n/n8n-nodes-smartlead#credentials"
+				"url": "https://github.com/whrit/n8n-nodes-smartlead#credentials"
 			}
 		]
 	}
