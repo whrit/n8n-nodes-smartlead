@@ -16,57 +16,55 @@ export const buildCampaignBody = (payloadParamName: string) =>
 		const operation = this.getNodeParameter('operation', 0) as string;
 		const body: IDataObject = {};
 
-		const campaignName = (this.getNodeParameter('campaignName', 0, '') as string).trim();
+		const campaignName = (this.getNodeParameter('campaignName', 0) as string).trim();
 		if (campaignName) {
 			body.campaign_name = campaignName;
 		}
 
-		const campaignDescription = (this.getNodeParameter('campaignDescription', 0, '') as string).trim();
+		const campaignDescription = (
+			this.getNodeParameter('campaignDescription', 0) as string
+		).trim();
 		if (campaignDescription) {
 			body.description = campaignDescription;
 		}
 
-		const clientId = (this.getNodeParameter('clientId', 0, '') as string).trim();
+		const clientId = (this.getNodeParameter('clientId', 0) as string).trim();
 		if (clientId) {
 			body.client_id = clientId;
 		}
 
-		const timezone = (this.getNodeParameter('timezone', 0, '') as string).trim();
+		const timezone = (this.getNodeParameter('timezone', 0) as string).trim();
 		if (timezone) {
 			body.timezone = timezone;
 		}
 
-		const startDate = (this.getNodeParameter('startDate', 0, '') as string).trim();
+		const startDate = (this.getNodeParameter('startDate', 0) as string).trim();
 		if (startDate) {
 			body.start_date = startDate;
 		}
 
-		const endDate = (this.getNodeParameter('endDate', 0, '') as string).trim();
+		const endDate = (this.getNodeParameter('endDate', 0) as string).trim();
 		if (endDate) {
 			body.end_date = endDate;
 		}
 
-		const sendingDays = this.getNodeParameter('sendingDays', 0, []) as string[];
+		const sendingDays = this.getNodeParameter('sendingDays', 0) as string[];
 		if (Array.isArray(sendingDays) && sendingDays.length) {
 			body.sending_days = sendingDays;
 		}
 
-		const dailyLeadLimit = this.getNodeParameter('dailyLeadLimit', 0, null) as number | null;
-		if (
-			typeof dailyLeadLimit === 'number' &&
-			!Number.isNaN(dailyLeadLimit) &&
-			dailyLeadLimit > 0
-		) {
+		const dailyLeadLimit = this.getNodeParameter('dailyLeadLimit', 0) as number;
+		if (Number.isFinite(dailyLeadLimit) && dailyLeadLimit > 0) {
 			body.daily_lead_limit = dailyLeadLimit;
 		}
 
-		const autoPauseOnReply = this.getNodeParameter('pauseOnReply', 0, false) as boolean;
+		const autoPauseOnReply = this.getNodeParameter('pauseOnReply', 0) as boolean;
 		if (autoPauseOnReply) {
 			body.pause_on_reply = autoPauseOnReply;
 		}
 
 		const emailAccountIds = mapCommaSeparatedList(
-			this.getNodeParameter('emailAccountIds', 0, '') as string,
+			this.getNodeParameter('emailAccountIds', 0) as string,
 		);
 		if (emailAccountIds?.length) {
 			body.email_account_ids = emailAccountIds;

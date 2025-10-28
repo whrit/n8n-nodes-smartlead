@@ -11,7 +11,7 @@ const parseJsonParameter = (
 	required: boolean,
 	expectObject: boolean,
 ): IDataObject | IDataObject[] | undefined => {
-	const rawValue = context.getNodeParameter(paramName, 0, null) as unknown;
+	const rawValue = context.getNodeParameter(paramName, 0) as unknown;
 
 	if (rawValue === null || rawValue === undefined) {
 		if (required) {
@@ -65,6 +65,15 @@ const parseJsonParameter = (
 	);
 };
 
+export const getJsonParameter = (
+	context: IExecuteSingleFunctions,
+	paramName: string,
+	{
+		required = false,
+		expectObject = false,
+	}: { required?: boolean; expectObject?: boolean } = {},
+): IDataObject | IDataObject[] | undefined => parseJsonParameter(context, paramName, required, expectObject);
+
 export const setJsonBody = (paramName: string, { required = true } = {}) =>
 	async function (this: IExecuteSingleFunctions, requestOptions: IHttpRequestOptions) {
 		const payload = getJsonParameter(this, paramName, { required });
@@ -82,12 +91,3 @@ export const mergeJsonQuery = (paramName: string) =>
 		}
 		return requestOptions;
 	};
-
-export const getJsonParameter = (
-	context: IExecuteSingleFunctions,
-	paramName: string,
-	{
-		required = false,
-		expectObject = false,
-	}: { required?: boolean; expectObject?: boolean } = {},
-): IDataObject | IDataObject[] | undefined => parseJsonParameter(context, paramName, required, expectObject);

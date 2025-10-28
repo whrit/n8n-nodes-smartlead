@@ -39,24 +39,24 @@ export class Smartlead implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'Lead',
-						value: 'lead',
-					},
-					{
-						name: 'Inbox',
-						value: 'inbox',
-					},
-					{
-						name: 'Webhook',
-						value: 'webhook',
+						name: 'Analytics',
+						value: 'analytics',
 					},
 					{
 						name: 'Campaign',
 						value: 'campaign',
 					},
 					{
-						name: 'Analytics',
-						value: 'analytics',
+						name: 'Inbox',
+						value: 'inbox',
+					},
+					{
+						name: 'Lead',
+						value: 'lead',
+					},
+					{
+						name: 'Webhook',
+						value: 'webhook',
 					},
 				],
 				default: 'lead',

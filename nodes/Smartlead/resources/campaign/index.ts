@@ -241,13 +241,13 @@ export const campaignDescription: INodeProperties[] = [
 		name: 'sendingDays',
 		type: 'multiOptions',
 		options: [
-			{ name: 'Monday', value: 'MONDAY' },
-			{ name: 'Tuesday', value: 'TUESDAY' },
-			{ name: 'Wednesday', value: 'WEDNESDAY' },
-			{ name: 'Thursday', value: 'THURSDAY' },
 			{ name: 'Friday', value: 'FRIDAY' },
+			{ name: 'Monday', value: 'MONDAY' },
 			{ name: 'Saturday', value: 'SATURDAY' },
 			{ name: 'Sunday', value: 'SUNDAY' },
+			{ name: 'Thursday', value: 'THURSDAY' },
+			{ name: 'Tuesday', value: 'TUESDAY' },
+			{ name: 'Wednesday', value: 'WEDNESDAY' },
 		],
 		default: [],
 		description: 'Restrict Smartlead sending to specific weekdays',
@@ -273,7 +273,7 @@ export const campaignDescription: INodeProperties[] = [
 		name: 'pauseOnReply',
 		type: 'boolean',
 		default: false,
-		description: 'Automatically pause a lead’s sequence when Smartlead records a reply',
+		description: 'Whether Smartlead should automatically pause a lead’s sequence when a reply is recorded',
 		displayOptions: {
 			show: forCampaignBody,
 		},
@@ -284,7 +284,7 @@ export const campaignDescription: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description:
-			'Comma separated Smartlead email account IDs to use for this campaign (Smartlead API reference — Add email account to campaign)',
+			'Comma-separated Smartlead email account IDs to use for this campaign (Smartlead API reference — Add email account to campaign)',
 		displayOptions: {
 			show: forCampaignBody,
 		},

@@ -108,6 +108,42 @@ export const analyticsDescription: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Day Wise Overall Stats',
+				value: 'dayWiseOverallStats',
+				description: 'Day-wise analytics across a date range',
+				action: 'Get day wise overall stats',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/analytics/day-wise/overall-stats',
+					},
+				},
+			},
+			{
+				name: 'Day Wise Overall Stats by Sent Time',
+				value: 'dayWiseOverallStatsBySentTime',
+				description: 'Day-wise analytics grouped by send time',
+				action: 'Get day wise overall stats by sent time',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/analytics/day-wise/overall-stats-by-sent-time',
+					},
+				},
+			},
+			{
+				name: 'Geo Report',
+				value: 'geoReport',
+				description: 'Geo-wise analytics report',
+				action: 'Get geo report',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/analytics/geo/report',
+					},
+				},
+			},
+			{
 				name: 'Lead Overall Stats',
 				value: 'leadOverallStats',
 				description: 'Lead-level analytics across a date range',
@@ -132,54 +168,6 @@ export const analyticsDescription: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Provider Performance',
-				value: 'providerPerformance',
-				description: 'Provider-wise performance metrics',
-				action: 'Get provider performance',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/analytics/providers/performance',
-					},
-				},
-			},
-			{
-				name: 'Geo Report',
-				value: 'geoReport',
-				description: 'Geo-wise analytics report',
-				action: 'Get geo report',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/analytics/geo/report',
-					},
-				},
-			},
-			{
-				name: 'Day-wise Overall Stats',
-				value: 'dayWiseOverallStats',
-				description: 'Day-wise analytics across a date range',
-				action: 'Get day-wise overall stats',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/analytics/day-wise/overall-stats',
-					},
-				},
-			},
-			{
-				name: 'Day-wise Overall Stats by Sent Time',
-				value: 'dayWiseOverallStatsBySentTime',
-				description: 'Day-wise analytics grouped by send time',
-				action: 'Get day-wise overall stats by sent time',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/analytics/day-wise/overall-stats-by-sent-time',
-					},
-				},
-			},
-			{
 				name: 'Overall Stats',
 				value: 'overallStats',
 				description: 'Workspace-wide overall analytics',
@@ -188,6 +176,18 @@ export const analyticsDescription: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/analytics/overall-stats',
+					},
+				},
+			},
+			{
+				name: 'Provider Performance',
+				value: 'providerPerformance',
+				description: 'Provider-wise performance metrics',
+				action: 'Get provider performance',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/analytics/providers/performance',
 					},
 				},
 			},
