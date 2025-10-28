@@ -2,6 +2,8 @@ import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { leadDescription } from './resources/lead';
 import { inboxDescription } from './resources/inbox';
 import { webhookDescription } from './resources/webhook';
+import { campaignDescription } from './resources/campaign';
+import { analyticsDescription } from './resources/analytics';
 
 export class Smartlead implements INodeType {
 	description: INodeTypeDescription = {
@@ -48,12 +50,22 @@ export class Smartlead implements INodeType {
 						name: 'Webhook',
 						value: 'webhook',
 					},
+					{
+						name: 'Campaign',
+						value: 'campaign',
+					},
+					{
+						name: 'Analytics',
+						value: 'analytics',
+					},
 				],
 				default: 'lead',
 			},
 			...leadDescription,
 			...inboxDescription,
 			...webhookDescription,
+			...campaignDescription,
+			...analyticsDescription,
 		],
 	};
 }
